@@ -1,4 +1,4 @@
-#include <verktyg.h>
+#include "verktyg.h"
 
 double calc(double a, double b, char operators)
 {
