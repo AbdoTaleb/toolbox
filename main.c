@@ -9,6 +9,7 @@ static void skriv_meny(void) {
     printf("4. Kontrollera om ett tal ar ett primtal\n");
     printf("5. FizzBuzz for ett intervall\n");
     printf("6. Enkel rakning (+, -, *, /)\n");
+    printf("11. FizzBuzz-sammanfattning\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -77,6 +78,18 @@ int main(void) {
 
                 printf("Resultat: %.2f\n",
                        berakna(a, b, operatortecken));
+                break;
+            }
+
+            case 11: {
+                int fran, till;
+                char sammanfattning[100];
+
+                printf("Ange start och slut (t.ex. 1 20): ");
+                scanf("%d %d", &fran, &till);
+                
+                fizzbuzz_sammanfattning(fran, till, sammanfattning);
+                printf("%s\n", sammanfattning);
                 break;
             }
 

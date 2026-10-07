@@ -24,3 +24,29 @@ void skriv_fizzbuzz(int fran, int till)
         }
     }
 }
+
+void fizzbuzz_sammanfattning(int fran, int till, char *sammanfattning)
+{
+    int fizzes = 0;
+    int buzzes = 0;
+    int fizzbuzzes = 0;
+
+    for (int i = fran; i <= till; i++) 
+    {
+        if(i % 3 == 0)
+        {
+            if (i % 5 == 0)
+            {
+                fizzbuzzes++;
+                continue;
+            }
+            fizzes++;
+        }
+        else if (i % 5 == 0)
+        {
+            buzzes++;
+        }
+    }
+    
+    sprintf(sammanfattning, "Fizz: %d, Buzz: %d, FizzBuzz: %d", fizzes, buzzes, fizzbuzzes);
+}
