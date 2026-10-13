@@ -11,6 +11,7 @@ static void skriv_meny(void) {
     printf("6. Enkel rakning (+, -, *, /)\n");
     printf("9. Flera multiplikationstabeller\n");
     printf("10. Rakna primtal i en lista\n");
+    printf("12. Byt plats pa tva tal\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -107,6 +108,19 @@ int main(void) {
                     scanf("%d", &tal[i]);
                 }
                 printf("Antal primtal: %d\n", raknar_primtal_i_array(tal, antal));
+              
+            case 12: {
+                double a, b;
+
+                printf("Ange tva tal, t.ex. \"3 7\": ");
+                scanf("%lf %lf", &a, &b);
+
+                printf("Fore: a = %.2f, b = %.2f\n", a, b);
+
+                byt_plats(&a, &b);
+
+                printf("Efter: a = %.2f, b = %.2f\n", a, b);
+
                 break;
             }
 
