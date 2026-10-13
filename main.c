@@ -108,7 +108,9 @@ int main(void) {
                     scanf("%d", &tal[i]);
                 }
                 printf("Antal primtal: %d\n", raknar_primtal_i_array(tal, antal));
-              
+                break;
+            }
+
             case 12: {
                 double a, b;
 
