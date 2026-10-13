@@ -7,5 +7,6 @@ void skriv_multiplikationstabell(int tal);
 int ar_primtal(int tal);
 void skriv_fizzbuzz(int fran, int till);
 double berakna(double a, double b, char operatortecken);
+void byt_plats(double *a, double *b);
 
 #endif
