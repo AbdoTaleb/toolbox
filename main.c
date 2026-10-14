@@ -149,6 +149,7 @@ int main(void) {
 
                 printf("Storst area ar %.2f, rektangel nummer %d\n",
                     storsta_area, index + 1);
+                break;
                 }
             case 11: {
                 int fran, till;

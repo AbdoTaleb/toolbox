@@ -22,7 +22,7 @@ void storst_rektangel(double bredder[], double hojder[], int antal,
             double area = bredder[i] * hojder[i];
             if(area > *storsta_area_ut){
                 *storsta_area_ut = area;
-                index_ut = i
+                *index_ut = i;
             }
         }
     }
