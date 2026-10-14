@@ -9,9 +9,13 @@ static void skriv_meny(void) {
     printf("4. Kontrollera om ett tal ar ett primtal\n");
     printf("5. FizzBuzz for ett intervall\n");
     printf("6. Enkel rakning (+, -, *, /)\n");
+
     printf("9. Flera multiplikationstabeller\n");
     printf("10. Rakna primtal i en lista\n");
     printf("12. Byt plats pa tva tal\n");
+
+    printf("8. Storst rektangel i en lista\n");
+
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -85,6 +89,7 @@ int main(void) {
 
 
 
+
             case 9: {
                 int tal[20];
                 int antal;
@@ -122,6 +127,27 @@ int main(void) {
                 byt_plats(&a, &b);
 
                 printf("Efter: a = %.2f, b = %.2f\n", a, b);
+                break;
+                }
+
+            case 8: {
+                double bredder[20], hojder[20];
+                int antal;
+                double storsta_area;
+                int index;
+
+                printf("Hur manga rektanglar vill du jamfora (max 20)? ");
+                scanf("%d", &antal);
+
+                for (int i = 0; i < antal; i++) {
+                    printf("Rektangel %d, bredd och hojd: ", i + 1);
+                    scanf("%lf %lf", &bredder[i], &hojder[i]);
+                }
+
+                storst_rektangel(bredder, hojder, antal, &storsta_area, &index);
+
+                printf("Storst area ar %.2f, rektangel nummer %d\n",
+                    storsta_area, index + 1);
 
                 break;
             }
