@@ -16,6 +16,7 @@ static void skriv_meny(void) {
 
     printf("8. Storst rektangel i en lista\n");
 
+    printf("11. FizzBuzz-sammanfattning\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -148,7 +149,16 @@ int main(void) {
 
                 printf("Storst area ar %.2f, rektangel nummer %d\n",
                     storsta_area, index + 1);
+                }
+            case 11: {
+                int fran, till;
+                char sammanfattning[100];
 
+                printf("Ange start och slut (t.ex. 1 20): ");
+                scanf("%d %d", &fran, &till);
+                
+                fizzbuzz_sammanfattning(fran, till, sammanfattning);
+                printf("%s\n", sammanfattning);
                 break;
             }
 
