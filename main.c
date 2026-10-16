@@ -9,14 +9,12 @@ static void skriv_meny(void) {
     printf("4. Kontrollera om ett tal ar ett primtal\n");
     printf("5. FizzBuzz for ett intervall\n");
     printf("6. Enkel rakning (+, -, *, /)\n");
-
+    printf("8. Storst rektangel i en lista\n");
     printf("9. Flera multiplikationstabeller\n");
     printf("10. Rakna primtal i en lista\n");
-    printf("12. Byt plats pa tva tal\n");
-
-    printf("8. Storst rektangel i en lista\n");
-
     printf("11. FizzBuzz-sammanfattning\n");
+    printf("12. Byt plats pa tva tal\n");
+    printf("18. Frigor matloggen\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -162,6 +160,13 @@ int main(void) {
                 
                 fizzbuzz_sammanfattning(fran, till, sammanfattning);
                 printf("%s\n", sammanfattning);
+                break;
+            }
+            case 18: {
+                frigor_matlogg(matlogg);
+                matlogg = NULL;
+                matlogg_antal = 0;
+                printf("Matloggen ar frigjord.\n");
                 break;
             }
 
