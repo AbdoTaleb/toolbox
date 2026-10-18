@@ -17,5 +17,6 @@ void byt_plats(double *a, double *b);
 void storst_rektangel(double bredder[], double hojder[], int antal,
 double *storsta_area_ut, int *index_ut);
 void frigor_matlogg(double *logg);
+void konvertera_serie(double *matningar, int antal);
 
 #endif

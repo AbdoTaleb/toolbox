@@ -15,6 +15,7 @@ static void skriv_meny(void) {
     printf("11. FizzBuzz-sammanfattning\n");
     printf("12. Byt plats pa tva tal\n");
     printf("18. Frigor matloggen\n");
+    printf("7. Konvertera flera temperaturer (Celsius till Fahrenheit)\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -168,6 +169,40 @@ int main(void) {
                 matlogg_antal = 0;
                 printf("Matloggen ar frigjord.\n");
                 break;
+            }
+            case 7: {
+                double matningar[20];
+                int antal;
+
+                printf("Hur manga temperaturer vill du mata in ? (max 20).");
+                scanf("%d", &antal);
+                if(antal < 1 || antal > 20 ) {
+                    printf("Ange ett antal mellan 1 och 20.\n");
+            
+                    break;
+
+                }
+
+                for (int i = 0; i < antal; i++){
+                    
+                    printf("Matning %d (Celsius): ", i + 1);
+                    scanf("%lf", &matningar[i]);
+
+                }
+
+                konvertera_serie(matningar, antal);
+
+                printf("Fahrenheit : ");
+                for (int i = 0; i < antal; i++){
+                    printf("%.2f ", matningar[i]);
+
+                }
+
+                printf("\n");
+                
+
+                break;
+
             }
 
             case 0:
