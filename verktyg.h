@@ -1,6 +1,11 @@
 #ifndef VERKTYG_H
 #define VERKTYG_H
 
+typedef struct {
+    char namn[50];
+    double varde;
+} Sensormatning;
+
 double celsius_till_fahrenheit(double celsius);
 double rektangelarea(double bredd, double hojd);
 void skriv_multiplikationstabell(int tal);
