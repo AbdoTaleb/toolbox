@@ -16,6 +16,7 @@ static void skriv_meny(void) {
     printf("11. FizzBuzz-sammanfattning\n");
     printf("12. Byt plats pa tva tal\n");
     printf("18. Frigor matloggen\n");
+    printf("19. Lagg till en sensormatning\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -170,6 +171,28 @@ int main(void) {
                 matlogg = NULL;
                 matlogg_antal = 0;
                 printf("Matloggen ar frigjord.\n");
+                break;
+            }
+            case 19: {
+                char namn[50];
+                double varde;
+
+                printf("Namn pa sensorn (utan mellanslag): ");
+                scanf("%49s", namn);
+
+                printf("Matvarde: ");
+                scanf("%lf", &varde);
+
+                sensorregister = lagg_till_sensormatning(
+                    sensorregister,
+                    &sensorregister_antal,
+                    namn,
+                    varde
+                );
+
+                printf("Sensorregistret innehaller nu %d post(er).\n",
+                    sensorregister_antal);
+
                 break;
             }
 
