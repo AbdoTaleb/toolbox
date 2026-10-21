@@ -15,6 +15,7 @@ static void skriv_meny(void) {
     printf("10. Rakna primtal i en lista\n");
     printf("11. FizzBuzz-sammanfattning\n");
     printf("12. Byt plats pa tva tal\n");
+    printf("16. Berakna statistik for matloggen\n");
     printf("17. Kopiera matloggen\n");
     printf("13. Lagg till en matning i matloggen\n");
     printf("15. Skriv ut matloggen\n");
@@ -170,6 +171,17 @@ int main(void) {
                 break;
             }
 
+            case 16: {
+                double min, max, medel;
+
+                berakna_loggstatistik(matlogg, matlogg_antal,
+                                      &min, &max, &medel);
+
+                printf("Minsta varde: %.2f\n", min);
+                printf("Storsta varde: %.2f\n", max);
+                printf("Medelvarde: %.2f\n", medel);
+                break;
+            }
             case 13: {
                 double varde;
 
