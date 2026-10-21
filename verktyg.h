@@ -22,6 +22,8 @@ void byt_plats(double *a, double *b);
 void storst_rektangel(double bredder[], double hojder[], int antal,
 double *storsta_area_ut, int *index_ut);
 void frigor_matlogg(double *logg);
+Sensormatning *lagg_till_sensormatning(Sensormatning *reg, int *antal, const char *namn, double varde);
+double *kopiera_matlogg(double *logg, int antal);
 
 void berakna_loggstatistik(double *logg, int antal,
                            double *min_ut, double *max_ut,
