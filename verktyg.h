@@ -29,4 +29,6 @@ void berakna_loggstatistik(double *logg, int antal,
                            double *min_ut, double *max_ut,
                            double *medel_ut);
 
+double *lagg_till_matning(double *logg, int *antal, double varde);
+void skriv_matlogg(double *logg, int antal);
 #endif
