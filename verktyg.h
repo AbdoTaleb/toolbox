@@ -23,4 +23,8 @@ void storst_rektangel(double bredder[], double hojder[], int antal,
 double *storsta_area_ut, int *index_ut);
 void frigor_matlogg(double *logg);
 
+void berakna_loggstatistik(double *logg, int antal,
+                           double *min_ut, double *max_ut,
+                           double *medel_ut);
+
 #endif
