@@ -16,10 +16,11 @@ static void skriv_meny(void) {
     printf("10. Rakna primtal i en lista\n");
     printf("11. FizzBuzz-sammanfattning\n");
     printf("12. Byt plats pa tva tal\n");
+    printf("13. Lagg till en matning i matloggen\n");
+    
+    printf("15. Skriv ut matloggen\n");
     printf("16. Berakna statistik for matloggen\n");
     printf("17. Kopiera matloggen\n");
-    printf("13. Lagg till en matning i matloggen\n");
-    printf("15. Skriv ut matloggen\n");
     printf("18. Frigor matloggen\n");
     printf("19. Lagg till en sensormatning\n");
     printf("20. Skriv ut sensorregistret\n");
