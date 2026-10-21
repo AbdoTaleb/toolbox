@@ -10,6 +10,7 @@ static void skriv_meny(void) {
     printf("4. Kontrollera om ett tal ar ett primtal\n");
     printf("5. FizzBuzz for ett intervall\n");
     printf("6. Enkel rakning (+, -, *, /)\n");
+    printf("7. Konvertera en serie Celsius-varden till Fahrenheit\n");
     printf("8. Storst rektangel i en lista\n");
     printf("9. Flera multiplikationstabeller\n");
     printf("10. Rakna primtal i en lista\n");
@@ -138,6 +139,7 @@ int main(void) {
                 printf("Efter: a = %.2f, b = %.2f\n", a, b);
                 break;
                 }
+                
 
             case 8: {
                 double bredder[20], hojder[20];
@@ -159,6 +161,34 @@ int main(void) {
                     storsta_area, index + 1);
                 break;
                 }
+
+                            case 7: {
+                double matningar[20];
+                int antal;
+
+                printf("Hur manga temperaturer vill du konvertera (max 20)? ");
+                scanf("%d", &antal);
+
+                if (antal < 1 || antal > 20) {
+                    printf("Ange mellan 1 och 20 temperaturer.\n");
+                    break;
+                }
+
+                for (int i = 0; i < antal; i++) {
+                    printf("Temperatur %d i Celsius: ", i + 1);
+                    scanf("%lf", &matningar[i]);
+                }
+
+                konvertera_serie(matningar, antal);
+
+                printf("Temperaturer i Fahrenheit:\n");
+                for (int i = 0; i < antal; i++) {
+                    printf("%.2f F\n", matningar[i]);
+                }
+
+                break;
+            }
+
             case 11: {
                 int fran, till;
                 char sammanfattning[100];
