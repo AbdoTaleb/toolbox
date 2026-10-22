@@ -11,7 +11,7 @@ void skriv_sensorregister(Sensormatning *reg, int antal)
     {
         for (int i = 0; i < antal; i++)
         {
-            printf("%s: %.2f\n", reg->namn, reg->varde);
+            printf("%s: %.2f\n", (*(reg + i)).namn, (*(reg + i)).varde);
         }
     }
 }
