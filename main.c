@@ -27,6 +27,7 @@ static void skriv_meny(void) {
     printf("21. Skriv ut medelvarde for sensorregistret\n");
     printf("22. Hitta en sensor via namn\n");
     printf("23. Spara sensorregistret till fil\n");
+    printf("24. Las in sensorregistret fran fil\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -289,16 +290,8 @@ int main(void) {
 
             }
 
-            case 23: {
-                char filnamn[100];
-                printf("Filnamn att spara till: ");
-                scanf("%99s", filnamn);
-                spara_sensorregister(filnamn, sensorregister, sensorregister_antal);
-                printf("Sensorregistret sparat till %s.\n", filnamn);
-                break;
-                }
 
-
+            
             case 22: {
                 char namn[50];
 
@@ -317,6 +310,35 @@ int main(void) {
 
                 break;
             }
+
+            case 23: {
+                char filnamn[100];
+                printf("Filnamn att spara till: ");
+                scanf("%99s", filnamn);
+                spara_sensorregister(filnamn, sensorregister, sensorregister_antal);
+                printf("Sensorregistret sparat till %s.\n", filnamn);
+                break;
+                }
+
+
+
+
+            case 24: {
+                char filnamn[100];
+
+                printf("Filnamn att lasa fran: ");
+                scanf("%99s", filnamn);
+
+                free(sensorregister);
+                sensorregister = lasa_sensorregister(
+                    filnamn, &sensorregister_antal);
+
+                printf("Laste in %d post(er) fran %s.\n",
+                       sensorregister_antal, filnamn);
+
+                break;
+            }
+
 
             case 0:
                 if (matlogg != NULL) {
