@@ -25,7 +25,7 @@ static void skriv_meny(void) {
     printf("19. Lagg till en sensormatning\n");
     printf("20. Skriv ut sensorregistret\n");
     printf("21. Skriv ut medelvarde for sensorregistret\n");
-
+    printf("22. Hitta en sensor via namn\n");
     printf("23. Spara sensorregistret till fil\n");
     printf("0. Avsluta\n");
     printf("Val: ");
@@ -297,6 +297,26 @@ int main(void) {
                 printf("Sensorregistret sparat till %s.\n", filnamn);
                 break;
                 }
+
+
+            case 22: {
+                char namn[50];
+
+                printf("Vilket namn vill du soka efter? ");
+                scanf("%49s", namn);
+
+                int index = hitta_sensor(sensorregister, sensorregister_antal, namn);
+
+                if (index == -1) {
+                    printf("Hittade ingen sensor med det namnet \"%s\".\n", namn);
+
+                } else {
+                    printf("Hittade \"%s\" pa plats %d, varde %.2f\n",
+                       namn, index, sensorregister[index].varde);
+                }
+
+                break;
+            }
 
             case 0:
                 if (matlogg != NULL) {
