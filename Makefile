@@ -1,28 +1,22 @@
-CC      := gcc
-CFLAGS  := -Wall -Wextra -Wpedantic -std=c17 -MMD -MP
-TARGET  := verktygslada
+CXX = g++
+CXXFLAGS = -Wall -Wextra -Wpedantic -std=c++20
 
-BUILD_DIR := build
+KALLOR = main.cpp temperatur.cpp geometri.cpp multiplikation.cpp \
+primtal.cpp fizzbuzz.cpp kalkylator.cpp \
+matlogg_lagg_till.cpp matlogg_ta_bort.cpp matlogg_skriv.cpp \
+matlogg_statistik.cpp matlogg_kopiera.cpp matlogg_frigor.cpp \
+sensor_lagg_till.cpp sensor_skriv.cpp sensor_medelvarde.cpp \
+sensor_hitta.cpp sensor_spara.cpp sensor_lasa.cpp
 
-SRCS := $(wildcard *.c)
-OBJS := $(SRCS:%.c=$(BUILD_DIR)/%.o)
-DEPS := $(OBJS:.o=.d)
+OBJEKT = $(KALLOR:.cpp=.o)
 
-all: $(TARGET)
+verktygslada: $(OBJEKT)
+	$(CXX) $(CXXFLAGS) $(OBJEKT) -o verktygslada
 
-$(TARGET): $(OBJS)
-	$(CC) $^ -o $@
+%.o: %.cpp verktyg.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(BUILD_DIR):
-	mkdir -p $@
-
--include $(DEPS)
+.PHONY: clean
 
 clean:
-	rm -rf $(BUILD_DIR) $(TARGET)
-
-.PHONY: all clean
-
+	rm -f $(OBJEKT) verktygslada verktygslada.exe

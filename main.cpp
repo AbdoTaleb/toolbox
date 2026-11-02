@@ -1,3 +1,5 @@
+#include <iostream>
+#include <iomanip>
 #include <stdio.h>
 #include <stdlib.h>
 #include "verktyg.h"
@@ -39,11 +41,15 @@ int main(void) {
     Sensormatning *sensorregister = NULL;
     int sensorregister_antal = 0;
 
+    std::cout << std::fixed << std::setprecision(2);
+    setvbuf(stdout, NULL, _IONBF, 0);
+
     do {
         skriv_meny();
-        scanf("%d", &val);
+        std::cin >> val;
 
         switch (val) {
+
             case 1: {
                 double celsius;
                 printf("Ange temperatur i Celsius: ");
@@ -103,72 +109,7 @@ int main(void) {
                 break;
             }
 
-
-
-
-            case 9: {
-                int tal[20];
-                int antal;
-                printf("Hur manga tabeller vill du skriva ut?(max 20) ");
-                scanf("%d", &antal);
-                for (int i = 0; i < antal; i++) {
-                    printf("Tal %d: ", i + 1);
-                    scanf("%d", &tal[i]);
-                }
-                skriv_flera_tabeller(tal, antal);
-                break;
-            }
-
-            case 10: {
-                int tal[20];
-                int antal;
-                printf("Hur manga tal vill du kontrollera?(max 20) ");
-                scanf("%d", &antal);
-                for (int i = 0; i < antal; i++) {
-                    printf("Tal %d: ", i + 1);
-                    scanf("%d", &tal[i]);
-                }
-                printf("Antal primtal: %d\n", raknar_primtal_i_array(tal, antal));
-                break;
-            }
-
-            case 12: {
-                double a, b;
-
-                printf("Ange tva tal, t.ex. \"3 7\": ");
-                scanf("%lf %lf", &a, &b);
-
-                printf("Fore: a = %.2f, b = %.2f\n", a, b);
-
-                byt_plats(&a, &b);
-
-                printf("Efter: a = %.2f, b = %.2f\n", a, b);
-                break;
-                }
-                
-
-            case 8: {
-                double bredder[20], hojder[20];
-                int antal;
-                double storsta_area;
-                int index;
-
-                printf("Hur manga rektanglar vill du jamfora (max 20)? ");
-                scanf("%d", &antal);
-
-                for (int i = 0; i < antal; i++) {
-                    printf("Rektangel %d, bredd och hojd: ", i + 1);
-                    scanf("%lf %lf", &bredder[i], &hojder[i]);
-                }
-
-                storst_rektangel(bredder, hojder, antal, &storsta_area, &index);
-
-                printf("Storst area ar %.2f, rektangel nummer %d\n",
-                    storsta_area, index + 1);
-                break;
-                }
-
-                            case 7: {
+            case 7: {
                 double matningar[20];
                 int antal;
 
@@ -195,17 +136,109 @@ int main(void) {
                 break;
             }
 
+            case 8: {
+                double bredder[20], hojder[20];
+                int antal;
+                double storsta_area;
+                int index;
+
+                printf("Hur manga rektanglar vill du jamfora (max 20)? ");
+                scanf("%d", &antal);
+
+                for (int i = 0; i < antal; i++) {
+                    printf("Rektangel %d, bredd och hojd: ", i + 1);
+                    scanf("%lf %lf", &bredder[i], &hojder[i]);
+                }
+
+                storst_rektangel(bredder, hojder, antal,
+                                 &storsta_area, &index);
+
+                printf("Storst area ar %.2f, rektangel nummer %d\n",
+                       storsta_area, index + 1);
+                break;
+            }
+
+            case 9: {
+                int tal[20];
+                int antal;
+
+                printf("Hur manga tabeller vill du skriva ut?(max 20) ");
+                scanf("%d", &antal);
+
+                for (int i = 0; i < antal; i++) {
+                    printf("Tal %d: ", i + 1);
+                    scanf("%d", &tal[i]);
+                }
+
+                skriv_flera_tabeller(tal, antal);
+                break;
+            }
+
+            case 10: {
+                int tal[20];
+                int antal;
+
+                printf("Hur manga tal vill du kontrollera?(max 20) ");
+                scanf("%d", &antal);
+
+                for (int i = 0; i < antal; i++) {
+                    printf("Tal %d: ", i + 1);
+                    scanf("%d", &tal[i]);
+                }
+
+                printf("Antal primtal: %d\n",
+                       raknar_primtal_i_array(tal, antal));
+                break;
+            }
+
             case 11: {
                 int fran, till;
                 char sammanfattning[100];
 
                 printf("Ange start och slut (t.ex. 1 20): ");
                 scanf("%d %d", &fran, &till);
-                
+
                 fizzbuzz_sammanfattning(fran, till, sammanfattning);
                 printf("%s\n", sammanfattning);
                 break;
             }
+
+            case 12: {
+                double a, b;
+
+                printf("Ange tva tal, t.ex. \"3 7\": ");
+                scanf("%lf %lf", &a, &b);
+
+                printf("Fore: a = %.2f, b = %.2f\n", a, b);
+
+                byt_plats(&a, &b);
+
+                printf("Efter: a = %.2f, b = %.2f\n", a, b);
+                break;
+            }
+
+            case 13: {
+                double varde;
+
+                printf("Ange matvarde att lagga till: ");
+                std::cin >> varde;
+
+                matlogg = lagg_till_matning(matlogg, &matlogg_antal, varde);
+
+                printf("Matloggen innehaller nu %d matning(ar).\n",
+                       matlogg_antal);
+                break;
+            }
+
+            case 14:
+                matlogg = ta_bort_senaste_matning(matlogg, &matlogg_antal);
+                printf("Matloggen innehaller nu %d matning(ar).\n",
+                       matlogg_antal);
+                break;
+
+            case 15:
+                skriv_matlogg(matlogg, matlogg_antal);
+                break;
 
             case 16: {
                 double min, max, medel;
@@ -218,44 +251,39 @@ int main(void) {
                 printf("Medelvarde: %.2f\n", medel);
                 break;
             }
-            case 13: {
-                double varde;
 
-                printf("Ange matvarde att lagga till: ");
-                scanf("%lf", &varde);
+            case 17: {
+                int kopia_antal = matlogg_antal;
+                double *kopia = kopiera_matlogg(matlogg, matlogg_antal);
 
-                matlogg = lagg_till_matning(matlogg, &matlogg_antal, varde);
+                printf("Kopierade %d matning(ar) till en ny logg:\n",
+                       kopia_antal);
 
-                printf("Matloggen innehaller nu %d matning(ar).\n", matlogg_antal);
+                skriv_matlogg(kopia, kopia_antal);
+                frigor_matlogg(kopia);
+
+                printf("(Kopian ar nu frigjord igen -- den var bara for testet.)\n");
                 break;
             }
 
-            case 14:
-                matlogg = ta_bort_senaste_matning(matlogg, &matlogg_antal);
-                printf("Matloggen innehaller nu %d matning(ar).\n", matlogg_antal);
-                break;
-
-            case 15:
-                skriv_matlogg(matlogg, matlogg_antal);
-                break;
-
-            
             case 18: {
                 frigor_matlogg(matlogg);
                 matlogg = NULL;
                 matlogg_antal = 0;
+
                 printf("Matloggen ar frigjord.\n");
                 break;
             }
+
             case 19: {
                 char namn[50];
                 double varde;
 
                 printf("Namn pa sensorn (utan mellanslag): ");
-                scanf("%49s", namn);
+                std::cin >> namn;
 
                 printf("Matvarde: ");
-                scanf("%lf", &varde);
+                std::cin >> varde;
 
                 sensorregister = lagg_till_sensormatning(
                     sensorregister,
@@ -265,47 +293,36 @@ int main(void) {
                 );
 
                 printf("Sensorregistret innehaller nu %d post(er).\n",
-                    sensorregister_antal);
-
+                       sensorregister_antal);
                 break;
             }
-
-            case 17: {
-                int kopia_antal = matlogg_antal;
-                double *kopia = kopiera_matlogg(matlogg, matlogg_antal);
-                printf("Kopierade %d matning(ar) till en ny logg:\n", kopia_antal);
-                skriv_matlogg(kopia, kopia_antal);
-                frigor_matlogg(kopia);
-                printf("(Kopian ar nu frigjord igen -- den var bara for testet.)\n");
-                break;
-                }
 
             case 20:
                 skriv_sensorregister(sensorregister, sensorregister_antal);
                 break;
 
             case 21: {
-                printf("Medelvarde : %.2f \n",medelvarde_sensorregister(sensorregister,sensorregister_antal));
+                printf("Medelvarde : %.2f \n",
+                       medelvarde_sensorregister(sensorregister,
+                                                 sensorregister_antal));
                 break;
-
             }
 
-
-            
             case 22: {
                 char namn[50];
 
                 printf("Vilket namn vill du soka efter? ");
-                scanf("%49s", namn);
+                std::cin >> namn;
 
-                int index = hitta_sensor(sensorregister, sensorregister_antal, namn);
+                int index = hitta_sensor(sensorregister,
+                                         sensorregister_antal, namn);
 
                 if (index == -1) {
-                    printf("Hittade ingen sensor med det namnet \"%s\".\n", namn);
-
+                    printf("Hittade ingen sensor med det namnet \"%s\".\n",
+                           namn);
                 } else {
                     printf("Hittade \"%s\" pa plats %d, varde %.2f\n",
-                       namn, index, sensorregister[index].varde);
+                           namn, index, sensorregister[index].varde);
                 }
 
                 break;
@@ -313,21 +330,22 @@ int main(void) {
 
             case 23: {
                 char filnamn[100];
+
                 printf("Filnamn att spara till: ");
-                scanf("%99s", filnamn);
-                spara_sensorregister(filnamn, sensorregister, sensorregister_antal);
+                std::cin >> filnamn;
+
+                spara_sensorregister(filnamn, sensorregister,
+                                     sensorregister_antal);
+
                 printf("Sensorregistret sparat till %s.\n", filnamn);
                 break;
-                }
-
-
-
+            }
 
             case 24: {
                 char filnamn[100];
 
                 printf("Filnamn att lasa fran: ");
-                scanf("%99s", filnamn);
+                std::cin >> filnamn;
 
                 free(sensorregister);
                 sensorregister = lasa_sensorregister(
@@ -335,10 +353,8 @@ int main(void) {
 
                 printf("Laste in %d post(er) fran %s.\n",
                        sensorregister_antal, filnamn);
-
                 break;
             }
-
 
             case 0:
                 if (matlogg != NULL) {
@@ -346,9 +362,11 @@ int main(void) {
                     matlogg = NULL;
                     matlogg_antal = 0;
                 }
+
                 free(sensorregister);
                 sensorregister = NULL;
                 sensorregister_antal = 0;
+
                 printf("Avslutar.\n");
                 break;
 

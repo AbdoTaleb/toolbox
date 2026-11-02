@@ -7,9 +7,9 @@ double *lagg_till_matning(double *logg, int *antal, double varde) {
     double *ny_logg = NULL;
 
     if (logg == NULL) {
-        ny_logg = malloc(sizeof(double));
+        ny_logg = (double *)malloc(sizeof(double));
     } else {
-        ny_logg = realloc(logg, (*antal + 1) * sizeof(double));
+        ny_logg = (double *)realloc(logg, (*antal + 1) * sizeof(double));
     }
 
     if (ny_logg == NULL) {

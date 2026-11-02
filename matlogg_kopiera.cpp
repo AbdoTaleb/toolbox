@@ -8,7 +8,7 @@ double *kopiera_matlogg(double *logg, int antal)
         return NULL;
     }
 
-    double *newLogg = malloc(antal * sizeof(*logg));
+    double *newLogg = (double *)malloc(antal * sizeof(*logg));
 
     for (int i = 0; i < antal; i++)
     {
