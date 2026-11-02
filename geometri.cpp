@@ -2,7 +2,8 @@
 
 double rektangelarea(double bredd, double hojd)
 {
-    return bredd * hojd;
+    double area = bredd * hojd;
+    return area;
 }
 
 void storst_rektangel(double bredder[], double hojder[], int antal,
