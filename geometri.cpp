@@ -2,6 +2,7 @@
 
 double rektangelarea(double bredd, double hojd)
 {
+    //Returnerar arean
     return bredd * hojd;
 }
 
