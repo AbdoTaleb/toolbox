@@ -280,7 +280,7 @@ int main(void) {
                 double varde;
 
                 printf("Namn pa sensorn (utan mellanslag): ");
-                std::cin >> namn;
+                std::cin >> std::setw(50) >> namn;
 
                 printf("Matvarde: ");
                 std::cin >> varde;
@@ -312,7 +312,7 @@ int main(void) {
                 char namn[50];
 
                 printf("Vilket namn vill du soka efter? ");
-                std::cin >> namn;
+                std::cin >> std::setw(50) >> namn;
 
                 int index = hitta_sensor(sensorregister,
                                          sensorregister_antal, namn);
@@ -332,7 +332,7 @@ int main(void) {
                 char filnamn[100];
 
                 printf("Filnamn att spara till: ");
-                std::cin >> filnamn;
+                std::cin >> std::setw(100) >> filnamn;
 
                 spara_sensorregister(filnamn, sensorregister,
                                      sensorregister_antal);
@@ -345,7 +345,7 @@ int main(void) {
                 char filnamn[100];
 
                 printf("Filnamn att lasa fran: ");
-                std::cin >> filnamn;
+                std::cin >> std::setw(100) >> filnamn;
 
                 free(sensorregister);
                 sensorregister = lasa_sensorregister(
