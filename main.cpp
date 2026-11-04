@@ -1,7 +1,7 @@
+#include "sensorobjekt_klass.h"
 #include <iostream>
 #include <iomanip>
 #include <stdio.h>
-#include <stdlib.h>
 #include "verktyg.h"
 
 static void skriv_meny(void) {
@@ -30,6 +30,12 @@ static void skriv_meny(void) {
     printf("22. Hitta en sensor via namn\n");
     printf("23. Spara sensorregistret till fil\n");
     printf("24. Las in sensorregistret fran fil\n");
+    printf("25. Visa alla sensorer (sensorobjekt)\n");
+    printf("26. Uppdatera en sensors varde\n");
+    printf("27. Nollstall en sensors matningsrakning\n");
+    printf("28. Kontrollera om en sensor ar inom en grans\n");
+    printf("29. Byt namn pa en sensor\n");
+    printf("30. Jamfor tva sensorer\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -41,6 +47,13 @@ int main(void) {
     Sensormatning *sensorregister = NULL;
     int sensorregister_antal = 0;
 
+    Sensor sensorer[3] = {
+        Sensor("Temp-ute", 18.5),
+        Sensor("Temp-inne", 21.0),
+        Sensor("Luftfuktighet", 45.0)
+    };
+
+std::cout << std::fixed << std::setprecision(2);
     std::cout << std::fixed << std::setprecision(2);
     setvbuf(stdout, NULL, _IONBF, 0);
 
@@ -350,6 +363,90 @@ int main(void) {
 
                 printf("Laste in %d post(er) fran %s.\n",
                        sensorregister_antal, filnamn);
+                break;
+            }
+
+            case 25:
+                for (int i = 0; i < 3; i++) {
+                    std::cout << i << ": ";
+                    sensorer[i].skrivUt();
+                }
+                break;
+
+            case 26: {
+                int index;
+                double nyttVarde;
+
+                std::cout << "Vilken sensor (0-2)? ";
+                std::cin >> index;
+
+                std::cout << "Nytt varde: ";
+                std::cin >> nyttVarde;
+
+                sensorer[index].uppdateraVarde(nyttVarde);
+                sensorer[index].skrivUt();
+                break;
+            }
+
+            case 27: {
+                int index;
+
+                std::cout << "Vilken sensor (0-2)? ";
+                std::cin >> index;
+
+                sensorer[index].nollstallRakning();
+                sensorer[index].skrivUt();
+                break;
+            }
+
+            case 28: {
+                int index;
+                double min, max;
+
+                std::cout << "Vilken sensor (0-2)? ";
+                std::cin >> index;
+
+                std::cout << "Undre och ovre grans: ";
+                std::cin >> min >> max;
+
+                if (sensorer[index].arInomGrans(min, max)) {
+                    std::cout << "Ja, senaste vardet ligger inom gransen.\n";
+                } else {
+                    std::cout << "Nej, senaste vardet ligger utanfor gransen.\n";
+                }
+                break;
+            }
+
+            case 29: {
+                int index;
+                char nyttNamn[50];
+
+                std::cout << "Vilken sensor (0-2)? ";
+                std::cin >> index;
+
+                std::cout << "Nytt namn (utan mellanslag): ";
+                std::cin >> std::setw(50) >> nyttNamn;
+
+                sensorer[index].bytNamn(nyttNamn);
+                sensorer[index].skrivUt();
+                break;
+            }
+
+            case 30: {
+                int index1, index2;
+
+                std::cout << "Jamfor sensor (0-2) och sensor (0-2): ";
+                std::cin >> index1 >> index2;
+
+                if (sensorer[index1].harHogreVarde(sensorer[index2])) {
+                    std::cout << "Sensor " << index1
+                            << " har ett hogre varde an sensor "
+                            << index2 << ".\n";
+                } else {
+                    std::cout << "Sensor " << index1
+                            << " har inte ett hogre varde an sensor "
+                            << index2 << ".\n";
+                }
                 break;
             }
 
