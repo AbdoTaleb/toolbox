@@ -100,15 +100,11 @@ int main(void) {
             case 6: {
                 double a, b;
                 char operatortecken;
-
-                printf("Ange uttryck, t.ex. \"4 + 2\": ");
-                scanf("%lf %c %lf", &a, &operatortecken, &b);
-
-                printf("Resultat: %.2f\n",
-                       berakna(a, b, operatortecken));
+                std::cout << "Ange uttryck, t.ex. \"4 + 2\": ";
+                std::cin >> a >> operatortecken >> b;
+                std::cout << "Resultat: " << berakna(a, b, operatortecken) << "\n";
                 break;
             }
-
             case 7: {
                 double matningar[20];
                 int antal;
@@ -206,14 +202,15 @@ int main(void) {
             case 12: {
                 double a, b;
 
-                printf("Ange tva tal, t.ex. \"3 7\": ");
-                scanf("%lf %lf", &a, &b);
+                std::cout << "Ange tva tal, t.ex. \"3 7\": ";
+                std::cin >> a >> b;
 
-                printf("Fore: a = %.2f, b = %.2f\n", a, b);
+                std::cout << "Fore: a = " << a << ", b = " << b << "\n";
 
-                byt_plats(&a, &b);
+                byt_plats(a, b);
 
-                printf("Efter: a = %.2f, b = %.2f\n", a, b);
+                std::cout << "Efter: a = " << a << ", b = " << b << "\n";
+
                 break;
             }
 

@@ -17,7 +17,7 @@ void konvertera_serie(double *matningar, int antal);
 
 void skriv_flera_tabeller(int tal[], int antal);
 int raknar_primtal_i_array(int tal[], int antal);
-void byt_plats(double *a, double *b);
+void byt_plats(double &a, double &b);
 
 
 void storst_rektangel(double bredder[], double hojder[], int antal,
