@@ -2,11 +2,8 @@
 
 double celsius_till_fahrenheit(double celsius)
 {
-    double fahrenheit;
-
-    fahrenheit = (celsius * 9.0 / 5.0) + 32.0;
-
-    return fahrenheit;
+    // Omvandla Celsius till Fahrenheit
+    return (celsius * 9.0 / 5.0) + 32.0;
 }
 
 void konvertera_serie(double *matningar, int antal)
