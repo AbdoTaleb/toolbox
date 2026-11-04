@@ -61,9 +61,9 @@ int main(void) {
 
             case 2: {
                 double bredd, hojd;
-                printf("Ange bredd och hojd: ");
-                scanf("%lf %lf", &bredd, &hojd);
-                printf("Arean ar %.2f\n", rektangelarea(bredd, hojd));
+                std::cout << "Ange bredd och hojd: ";
+                std::cin >> bredd >> hojd;
+                std::cout << "Arean ar " << rektangelarea(bredd, hojd) << "\n";
                 break;
             }
 
@@ -142,19 +142,18 @@ int main(void) {
                 double storsta_area;
                 int index;
 
-                printf("Hur manga rektanglar vill du jamfora (max 20)? ");
-                scanf("%d", &antal);
+                std::cout << "Hur manga rektanglar vill du jamfora (max 20)? ";
+                std::cin >> antal;
 
                 for (int i = 0; i < antal; i++) {
-                    printf("Rektangel %d, bredd och hojd: ", i + 1);
-                    scanf("%lf %lf", &bredder[i], &hojder[i]);
+                    std::cout << "Rektangel " << i + 1 << ", bredd och hojd: ";
+                    std::cin >> bredder[i] >> hojder[i];
                 }
 
                 storst_rektangel(bredder, hojder, antal,
-                                 &storsta_area, &index);
+                                 storsta_area, index);
 
-                printf("Storst area ar %.2f, rektangel nummer %d\n",
-                       storsta_area, index + 1);
+                std::cout << "Storst area ar " << storsta_area << ", rektangel nummer " << index + 1 << "\n";
                 break;
             }
 
