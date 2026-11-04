@@ -91,8 +91,8 @@ int main(void) {
 
             case 5: {
                 int fran, till;
-                printf("Ange start och slut (t.ex. 1 20): ");
-                scanf("%d %d", &fran, &till);
+                std::cout << "Ange start och slut (t.ex. 1 20): ";
+                std::cin >> fran >> till;
                 skriv_fizzbuzz(fran, till);
                 break;
             }
@@ -195,11 +195,11 @@ int main(void) {
                 int fran, till;
                 char sammanfattning[100];
 
-                printf("Ange start och slut (t.ex. 1 20): ");
-                scanf("%d %d", &fran, &till);
+                std::cout << "Ange start och slut (t.ex. 1 20): ";
+                std::cin >> fran >> till;
 
                 fizzbuzz_sammanfattning(fran, till, sammanfattning);
-                printf("%s\n", sammanfattning);
+                std::cout << sammanfattning << "\n";
                 break;
             }
 

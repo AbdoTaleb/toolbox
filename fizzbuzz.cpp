@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdio.h>
 #include "verktyg.h"
 
@@ -9,18 +10,18 @@ void skriv_fizzbuzz(int fran, int till)
         {
             if (i % 5 == 0)
             {
-                printf("FizzBuzz\n");
+                std::cout << "FizzBuzz\n";
                 continue;
             }
-            printf("Fizz\n");
+            std::cout << "Fizz\n";
         }
         else if (i % 5 == 0)
         {
-            printf("Buzz\n");
+            std::cout << "Buzz\n";
         }
         else
         {
-            printf("%d\n", i);
+            std::cout << i << "\n";
         }
     }
 }
