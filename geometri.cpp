@@ -1,8 +1,8 @@
+
 #include "verktyg.h"
 
 double rektangelarea(double bredd, double hojd)
 {
-    //Returnerar arean
     return bredd * hojd;
 }
 
@@ -26,4 +26,5 @@ void storst_rektangel(double bredder[], double hojder[], int antal,
                 *index_ut = i;
             }
         }
+
     }
