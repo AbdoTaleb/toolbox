@@ -65,10 +65,10 @@ std::cout << std::fixed << std::setprecision(2);
 
             case 1: {
                 double celsius;
-                printf("Ange temperatur i Celsius: ");
-                scanf("%lf", &celsius);
-                printf("%.2f C = %.2f F\n",
-                       celsius, celsius_till_fahrenheit(celsius));
+                std::cout<<"Ange temperatur i Celsius: ";
+                std::cin >> celsius;
+                std::cout << celsius << "C = " 
+                << celsius_till_fahrenheit(celsius) << "F\n";
                 break;
             }
 
@@ -82,8 +82,8 @@ std::cout << std::fixed << std::setprecision(2);
 
             case 3: {
                 int tal;
-                printf("Ange ett tal: ");
-                scanf("%d", &tal);
+                std::cout << "Ange ett heltal: ";
+                std::cin >> tal;
                 skriv_multiplikationstabell(tal);
                 break;
             }
@@ -122,26 +122,27 @@ std::cout << std::fixed << std::setprecision(2);
                 double matningar[20];
                 int antal;
 
-                printf("Hur manga temperaturer vill du konvertera (max 20)? ");
-                scanf("%d", &antal);
+                std::cout << "Hur manga temperaturer vill du konvertera (max 20)? ";
+                std::cin >> antal;
 
                 if (antal < 1 || antal > 20) {
-                    printf("Ange mellan 1 och 20 temperaturer.\n");
+                    std::cout <<"Ange mellan 1 och 20 temperaturer.\n";
                     break;
                 }
 
                 for (int i = 0; i < antal; i++) {
-                    printf("Temperatur %d i Celsius: ", i + 1);
-                    scanf("%lf", &matningar[i]);
+                    std::cout << "Temperatur " << i + 1 << " i Celsius: ";
+                    std::cin >> matningar[i];
+                    
                 }
 
                 konvertera_serie(matningar, antal);
 
-                printf("Temperaturer i Fahrenheit:\n");
+                std::cout << "Temperaturer i Fahrenheit:\n";
                 for (int i = 0; i < antal; i++) {
-                    printf("%.2f F\n", matningar[i]);
+                    std::cout << matningar[i] << " F\n";
                 }
-
+                
                 break;
             }
 
@@ -171,12 +172,12 @@ std::cout << std::fixed << std::setprecision(2);
                 int tal[20];
                 int antal;
 
-                printf("Hur manga tabeller vill du skriva ut?(max 20) ");
-                scanf("%d", &antal);
+                std::cout << "Hur manga tabeller vill du skriva ut?(max 20) ";
+                std::cin >> antal;
 
                 for (int i = 0; i < antal; i++) {
-                    printf("Tal %d: ", i + 1);
-                    scanf("%d", &tal[i]);
+                    std::cout << "Tal " << i + 1 << ": ";
+                    std::cin >> tal[i];
                 }
 
                 skriv_flera_tabeller(tal, antal);
