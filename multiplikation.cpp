@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <iostream>
 #include "verktyg.h"
 
 void skriv_multiplikationstabell(int tal) 
