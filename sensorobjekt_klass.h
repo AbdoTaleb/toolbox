@@ -1,11 +1,14 @@
 #ifndef SENSOROBJEKT_KLASS_H
 #define SENSOROBJEKT_KLASS_H
 
-struct Sensor {
+class Sensor 
+{
+private:
     char namn[50];
     double senasteVarde;
     int antalMatningar;
 
+public:
     Sensor();
     Sensor(const char *sensornamn, double startvarde);
     ~Sensor();
@@ -13,10 +16,15 @@ struct Sensor {
     void uppdateraVarde(double nyttVarde);
     void nollstallRakning();
     bool arInomGrans(double min, double max) const;
-    void bytNamn(const char *nyttNamn);
+    bool bytNamn(const char *nyttNamn);
     void skrivUt() const;
-
     bool harHogreVarde(const Sensor &annan) const;
+
+    const char *hamtaNamn() const;
+    double hamtaSenasteVarde() const;
+    int hamtaAntalMatningar() const;
+    bool sattAntalMatningar(int nyttAtal);
+    bool arGiltig() const;
 };
 
 #endif
