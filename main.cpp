@@ -3,6 +3,9 @@
 #include <iomanip>
 #include <stdio.h>
 #include "verktyg.h"
+#include "temperatursensor_klass.h"
+#include "rorelsesensor_klass.h"
+#include "fuktsensor_klass.h"
 
 static void skriv_meny(void) {
     printf("\n=== Gruppens verktygslada ===\n");
@@ -39,6 +42,12 @@ static void skriv_meny(void) {
     printf("31. Hamta information om en sensor (getters)\n");
     printf("32. Satt antal matningar direkt (testar validering)\n");
     printf("33. Kontrollera om en sensor ar giltig\n");
+    printf("34. Visa temperatursensorns enhet\n");
+    printf("35. Visa temperatursensorn i Fahrenheit\n");
+    printf("36. Visa om rorelse har detekterats\n");
+    printf("37. Utlos rorelselarmet\n");
+    printf("38. Visa fuktsensorns kritiska grans\n");
+    printf("39. Kontrollera om fuktsensorn ar kritiskt fuktig\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -55,8 +64,11 @@ int main(void) {
         Sensor("Temp-inne", 21.0),
         Sensor("Luftfuktighet", 45.0)
     };
+    TemperatureSensor temperatursensor("Temp-utomhus", 15.0, "Celsius");
+    MotionSensor rorelsesensor("Rorelse-hall");
+    HumiditySensor fuktsensor("Fukt-kallare", 55.0, 70.0);
 
-std::cout << std::fixed << std::setprecision(2);
+    std::cout << std::fixed << std::setprecision(2);
     std::cout << std::fixed << std::setprecision(2);
     setvbuf(stdout, NULL, _IONBF, 0);
 
@@ -498,6 +510,39 @@ std::cout << std::fixed << std::setprecision(2);
                 }
                 break;
             }
+            case 34:
+                std::cout << "Enhet: " << temperatursensor.hamtaEnhet() << "\n";
+                break;
+
+            case 35:
+                std::cout << temperatursensor.hamtaNamn() << " i Fahrenheit: "
+                        << temperatursensor.hamtaSomFahrenheit() << "\n";
+                break;
+
+            case 36:
+                if (rorelsesensor.harRorelseDetekterats()) {
+                    std::cout << "Rorelse har detekterats.\n";
+                } else {
+                    std::cout << "Ingen rorelse har detekterats.\n";
+                }
+                break;
+
+            case 37:
+                rorelsesensor.utlosLarm();
+                std::cout << "Larmet utlost.\n";
+                break;
+
+            case 38:
+                std::cout << "Kritisk grans: " << fuktsensor.hamtaKritiskGrans() << "\n";
+                break;
+
+            case 39:
+                if (fuktsensor.arKritisktFuktigt()) {
+                    std::cout << "Varning: kritiskt fuktigt!\n";
+                } else {
+                    std::cout << "Fuktnivan ar under den kritiska gransen.\n";
+                }
+                break;
             case 0:
                 if (matlogg != NULL) {
                     frigor_matlogg(matlogg);

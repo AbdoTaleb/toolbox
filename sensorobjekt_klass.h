@@ -3,7 +3,7 @@
 
 class Sensor 
 {
-private:
+protected:
     char namn[50];
     double senasteVarde;
     int antalMatningar;
