@@ -12,6 +12,9 @@ public:
 
     bool harRorelseDetekterats() const;
     void utlosLarm();
+
+    const char *hamtaTyp() const override;
+    void skrivUt() const override;
 };
 
  #endif
