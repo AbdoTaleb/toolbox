@@ -52,6 +52,12 @@ static void skriv_meny(void) {
     printf("38. Visa fuktsensorns kritiska grans\n");
     printf("39. Kontrollera om fuktsensorn ar kritiskt fuktig\n");
     printf("40. Lagg till en ny sensor\n");
+    printf("41. Lagg till en anteckning\n");
+    printf("42. Visa alla anteckningar\n");
+    printf("43. Sok efter ett ord i anteckningarna\n");
+    printf("44. Sortera anteckningarna\n");
+    printf("45. Ta bort en anteckning\n");
+    printf("46. Rensa alla anteckningar\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -63,6 +69,8 @@ int main(void) {
     int sensorregister_antal = 0;
 
     std::vector<Sensor*> sensorer;
+    std::vector<std::string> anteckningar;
+
     sensorer.push_back(new TemperatureSensor("Temp-ute", 18.5, "Celsius"));
     sensorer.push_back(new TemperatureSensor("Temp-inne", 21.0, "Celsius"));
     sensorer.push_back(new HumiditySensor("Luftfuktighet", 45.0, 70.0));
