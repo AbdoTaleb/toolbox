@@ -607,7 +607,32 @@ int main(void) {
 
                 std::cout << "Sensor tillagd. Antal sensorer nu: " << sensorer.size() << "\n";
             break;
-            } 
+            }
+            case 41: {
+                std::cin.ignore();
+                std::string anteckning;
+
+                std::cout << "Skriv din anteckning: ";
+                std::getline(std::cin, anteckning);
+
+                anteckningar.push_back(anteckning);
+                std::cout << "Anteckning tillagd. Antal: " << anteckningar.size() << "\n";
+            break;
+            }
+            case 42: {
+                if (anteckningar.empty()) 
+                {
+                    std::cout << "Inga anteckningar an.\n";
+                } 
+                else 
+                {
+                    for (size_t i = 0; i < anteckningar.size(); i++) 
+                    {
+                        std::cout << i << ": " << anteckningar[i] << "\n";
+                    }
+                }
+            break;
+            }         
             case 0:
                 free(sensorregister);
                 sensorregister = NULL;
