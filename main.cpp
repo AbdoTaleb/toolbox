@@ -632,6 +632,7 @@ int main(void) {
                     }
                 }
             break;
+            }
             case 43: {
                 std::cin.ignore();
                 std::string sokord;
@@ -664,8 +665,20 @@ int main(void) {
                 anteckningar.erase(anteckningar.begin() + index);
                 std::cout << "Borttagen. Antal kvar: " << anteckningar.size() << "\n";
                 break;
-            }
-            }         
+            }      
+            case 46: {
+                std::cout << "Antal anteckningar just nu: " << anteckningar.size() << "\n";
+                std::cout << "Rensa alla (1 = ja, 0 = nej)? ";
+
+                int svar;
+                std::cin >> svar;
+
+                if (svar == 1) {
+                    anteckningar.clear();
+                    std::cout << "Alla anteckningar rensade.\n";
+                }
+                break;
+            }  
             case 0:
                 free(sensorregister);
                 sensorregister = NULL;
