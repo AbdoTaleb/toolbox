@@ -632,6 +632,24 @@ int main(void) {
                     }
                 }
             break;
+            case 43: {
+                std::cin.ignore();
+                std::string sokord;
+                std::cout << "Sok efter ordet: ";
+                std::getline(std::cin, sokord);
+
+                bool hittad = false;
+                for (size_t i = 0; i < anteckningar.size(); i++) {
+                    if (anteckningar[i].find(sokord) != std::string::npos) {
+                        std::cout << i << ": " << anteckningar[i] << "\n";
+                        hittad = true;
+                    }
+                }
+                if (!hittad) {
+                    std::cout << "Hittade ingen anteckning med ordet \"" << sokord << "\".\n";
+                }
+                break;
+            }
             }         
             case 0:
                 free(sensorregister);
