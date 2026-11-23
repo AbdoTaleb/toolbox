@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include <iomanip>
 #include <stdio.h>
@@ -9,6 +10,7 @@
 #include "temperatursensor_klass.h"
 #include "rorelsesensor_klass.h"
 #include "fuktsensor_klass.h"
+#include "sensorstatistik.h"
 
 static void skriv_meny(void) {
     printf("\n=== Gruppens verktygslada ===\n");
@@ -58,6 +60,7 @@ static void skriv_meny(void) {
     printf("44. Sortera anteckningarna\n");
     printf("45. Ta bort en anteckning\n");
     printf("46. Rensa alla anteckningar\n");
+    printf("47. Berakna medelvarde for en sensortyp\n");
     printf("0. Avsluta\n");
     printf("Val: ");
 }
@@ -422,6 +425,8 @@ int main(void) {
                 std::cout << "Vilken sensor (0-" << (sensorer.size() - 1) << ")? ";
                 std::cin >> index;
 
+                assert(index >= 0 && index < (int)sensorer.size());
+
                 std::cout << "Nytt varde: ";
                 std::cin >> nyttVarde;
 
@@ -679,6 +684,14 @@ int main(void) {
                 }
                 break;
             }  
+            case 47: {
+                std::string typ;
+                std::cout << "Vilken typ (t.ex. \"Temperatursensor\")? ";
+                std::cin.ignore();
+                std::getline(std::cin, typ);
+                std::cout << "Medelvarde: " << hamtaMedelvardeForTyp(sensorer, typ) << "\n";
+                break;
+            }
             case 0:
                 free(sensorregister);
                 sensorregister = NULL;
