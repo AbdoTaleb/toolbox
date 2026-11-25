@@ -658,6 +658,14 @@ int main(void) {
                 }
                 break;
             }
+
+            case 44: {
+
+                std::sort(anteckningar.begin(), anteckningar.end());
+                std::cout << "Anteckningarna ar nu sorterade i bokstavsordning." << std::endl;
+
+                break;
+            }
             case 45: {
                 if (anteckningar.empty()) {
                     std::cout << "Inga anteckningar att ta bort.\n";
